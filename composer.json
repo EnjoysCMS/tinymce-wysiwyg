@@ -1,0 +1,17 @@
+{
+  "name": "enjoyscms/tinymce",
+  "description": "Wysiwyg TinyMCE for EnjoysCMS",
+  "type": "enjoyscms-wysiwyg",
+  "require": {
+    "oomphinc/composer-installers-extender": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "EnjoysCMS\\WYSIWYG\\TinyMCE\\": "src/"
+    }
+  },
+  "extra": {
+    "module-name": "TinyMCE WYSIWYG Editor",
+    "use-migrations": false
+  }
+}
