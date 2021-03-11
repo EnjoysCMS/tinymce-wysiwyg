@@ -9,17 +9,17 @@ use App\Components\WYSIWYG\WysiwygInterface;
 
 class TinyMCE implements WysiwygInterface
 {
-    private string $template;
+    private string $twigTemplate;
 
-    public function __construct(string $template = null)
+    public function __construct(string $twigTemplate = null)
     {
-        $this->template = $template ?? '@wysisyg/tinymce/src/template/basic.tpl';
+        $this->twigTemplate = $twigTemplate ?? '@wysisyg/tinymce/src/template/basic.tpl';
         $this->initialize();
     }
 
-    public function getTemplate()
+    public function getTwigTemplate()
     {
-        return $this->template;
+        return $this->twigTemplate;
     }
 
     private function initialize()
