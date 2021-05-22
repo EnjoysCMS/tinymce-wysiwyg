@@ -15,6 +15,6 @@
     "use-migrations": false
   },
   "scripts": {
-    "assets-instal": "cd ./WYSIWYG/tinymce && yarn install"
+    "assets-install": "cd ./WYSIWYG/tinymce && yarn install"
   }
 }
