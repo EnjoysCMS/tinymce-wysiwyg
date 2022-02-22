@@ -24,8 +24,7 @@ class TinyMCE implements WysiwygInterface
     private function initialize()
     {
         $path = str_replace($_ENV['PROJECT_DIR'], '', realpath(__DIR__.'/../'));
-        Assets::createSymlink(sprintf('%s/assets%s/tinymce/node_modules/tinymce', $_ENV['PUBLIC_DIR'], $path), __DIR__ . '/../node_modules/tinymce');
-        Assets::createSymlink(sprintf('%s/assets%s/tinymce/node_modules/tinymce/langs/ru.js', $_ENV['PUBLIC_DIR'], $path), __DIR__ . '/langs/ru.js');
+        Assets::createSymlink(sprintf('%s/assets%s/node_modules/tinymce', $_ENV['PUBLIC_DIR'], $path), __DIR__ . '/../node_modules/tinymce');
         Assets::js(__DIR__ . '/../node_modules/tinymce/tinymce.min.js');
     }
 }
