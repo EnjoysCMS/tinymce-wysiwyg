@@ -2,6 +2,6 @@
   "name": "tinymce",
   "license": "MIT",
   "dependencies": {
-    "tinymce": "^5.7.0"
+    "tinymce": "^5.10"
   }
 }
