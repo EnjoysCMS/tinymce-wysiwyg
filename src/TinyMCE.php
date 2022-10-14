@@ -22,7 +22,7 @@ class TinyMCE implements WysiwygInterface
 
     public function getTwigTemplate(): string
     {
-        return $this->twigTemplate  ?? '@wysisyg/tinymce/src/template/basic.tpl';
+        return $this->twigTemplate  ?? '@wysiwyg/tinymce/src/template/basic.tpl';
     }
 
     private function initialize()
