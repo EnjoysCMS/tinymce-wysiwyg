@@ -1,15 +1,4 @@
 <script type="text/javascript">
-    // const mceElf = new tinymceElfinder({
-    //     // connector URL (Set your connector)
-    //     url: '<?=_MODURL_?>/elfinder/dist/php/connector.minimal.php', // use an absolute path!
-    //     // upload target folder hash for this tinyMCE
-    //     uploadTargetHash: 'l1_lw', // Hash value on elFinder of writable folder
-    //     // elFinder dialog node id
-    //     nodeId: 'elfinder', // Any ID you decide
-    //     baseUrl: '<?=_MODURL_?>/elfinder/dist/',
-    //     lang: 'ru'
-    // });
-
     tinymce.init({
         selector: '{{ selector }}',
         plugins: [

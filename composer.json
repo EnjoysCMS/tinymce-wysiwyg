@@ -1,22 +1,17 @@
 {
   "name": "enjoyscms/tinymce",
   "description": "Wysiwyg TinyMCE for EnjoysCMS",
-  "type": "enjoyscms-wysiwyg",
   "require": {
     "php": "^8.0",
-    "enjoyscms/core": "^4.5 <4.8"
+    "enjoyscms/core": "^4.7"
   },
   "autoload": {
     "psr-4": {
-      "EnjoysCMS\\WYSIWYG\\TinyMCE\\": "src/"
+      "EnjoysCMS\\ContentEditor\\TinyMCE\\": "src/"
     }
   },
-  "extra": {
-    "module-name": "TinyMCE WYSIWYG Editor",
-    "use-migrations": false
-  },
   "scripts": {
-    "post-install-cmd": "EnjoysCMS\\WYSIWYG\\TinyMCE\\Composer::assetsInstall",
-    "post-update-cmd": "EnjoysCMS\\WYSIWYG\\TinyMCE\\Composer::assetsInstall"
+    "post-install-cmd": "EnjoysCMS\\ContentEditor\\TinyMCE\\Composer::assetsInstall",
+    "post-update-cmd": "EnjoysCMS\\ContentEditor\\TinyMCE\\Composer::assetsInstall"
   }
 }

@@ -2,8 +2,7 @@
 
 declare(strict_types=1);
 
-
-namespace EnjoysCMS\WYSIWYG\TinyMCE;
+namespace EnjoysCMS\ContentEditor\TinyMCE;
 
 use Composer\Script\Event;
 
