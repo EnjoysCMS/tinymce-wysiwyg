@@ -4,8 +4,11 @@ declare(strict_types=1);
 namespace EnjoysCMS\ContentEditor\TinyMCE;
 
 use Enjoys\AssetsCollector;
-use EnjoysCMS\Core\Components\ContentEditor\ContentEditorInterface;
+use EnjoysCMS\Core\ContentEditor\ContentEditorInterface;
+use Exception;
 use Psr\Log\LoggerInterface;
+use RuntimeException;
+use Throwable;
 use Twig\Environment;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -16,23 +19,23 @@ final class TinyMCE implements ContentEditorInterface
     private ?string $selector = null;
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct(
-        private Environment $twig,
-        private AssetsCollector\Assets $assets,
-        private LoggerInterface $logger,
-        private ?string $template = null
+        private readonly Environment $twig,
+        private readonly AssetsCollector\Assets $assets,
+        private readonly LoggerInterface $logger,
+        private readonly ?string $template = null
     ) {
         if (!file_exists(__DIR__ . '/../node_modules/tinymce')) {
             $command = sprintf('cd %s && yarn install', realpath(__DIR__ . '/..'));
             try {
                 $result = passthru($command);
                 if ($result === false) {
-                    throw new \Exception();
+                    throw new Exception();
                 }
-            } catch (\Throwable) {
-                throw new \RuntimeException(sprintf('Run: %s', $command));
+            } catch (Throwable) {
+                throw new RuntimeException(sprintf('Run: %s', $command));
             }
         }
         $this->initialize();
@@ -45,7 +48,7 @@ final class TinyMCE implements ContentEditorInterface
 
 
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     private function initialize(): void
     {
@@ -72,7 +75,7 @@ final class TinyMCE implements ContentEditorInterface
     public function getSelector(): string
     {
         if ($this->selector === null) {
-            throw new \RuntimeException('Selector not set');
+            throw new RuntimeException('Selector not set');
         }
         return $this->selector;
     }
@@ -86,7 +89,7 @@ final class TinyMCE implements ContentEditorInterface
     {
         $twigTemplate = $this->getTemplate();
         if (!$this->twig->getLoader()->exists($twigTemplate)) {
-            throw new \RuntimeException(
+            throw new RuntimeException(
                 sprintf("ContentEditor: (%s): Нет шаблона в по указанному пути: %s", self::class, $twigTemplate)
             );
         }
