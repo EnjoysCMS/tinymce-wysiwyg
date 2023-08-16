@@ -43,7 +43,7 @@ final class TinyMCE implements ContentEditorInterface
 
     private function getTemplate(): ?string
     {
-        return $this->template ?? __DIR__ . '/template/basic.tpl';
+        return $this->template ?? __DIR__ . '/template/basic.twig';
     }
 
 
