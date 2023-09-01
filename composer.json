@@ -1,17 +1,25 @@
 {
-  "name": "enjoyscms/tinymce",
-  "description": "Wysiwyg TinyMCE for EnjoysCMS",
-  "require": {
-    "php": "^8.1",
-    "enjoyscms/core": "^6.0@dev"
-  },
-  "autoload": {
-    "psr-4": {
-      "EnjoysCMS\\ContentEditor\\TinyMCE\\": "src/"
+    "name": "enjoyscms/tinymce",
+    "description": "Wysiwyg TinyMCE for EnjoysCMS",
+    "require": {
+        "php": "^8.1",
+        "enjoyscms/core": "^6.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "EnjoysCMS\\ContentEditor\\TinyMCE\\": "src/",
+            "EnjoysCMS\\ContentEditor\\TinyMCE\\Composer\\Scripts\\": "scripts/"
+        }
+    },
+    "scripts": {
+        "tinymce-assets-install": "EnjoysCMS\\ContentEditor\\TinyMCE\\Composer\\Scripts\\AssetsInstallCommand",
+        "post-install-cmd": [
+            "echo -e \"\\x1b[1mTinyMCE\\x1b[00m\"",
+            "@tinymce-assets-install"
+        ],
+        "post-update-cmd": [
+            "echo -e \"\\x1b[1mTinyMCE\\x1b[00m\"",
+            "@tinymce-assets-install"
+        ]
     }
-  },
-  "scripts": {
-    "post-install-cmd": "EnjoysCMS\\ContentEditor\\TinyMCE\\Composer::assetsInstall",
-    "post-update-cmd": "EnjoysCMS\\ContentEditor\\TinyMCE\\Composer::assetsInstall"
-  }
 }
