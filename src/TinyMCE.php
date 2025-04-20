@@ -14,6 +14,8 @@ use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 
+use function Enjoys\FileSystem\makeSymlink;
+
 final class TinyMCE implements ContentEditorInterface
 {
     private ?string $selector = null;
@@ -53,17 +55,9 @@ final class TinyMCE implements ContentEditorInterface
     private function initialize(): void
     {
         $path = str_replace(getenv('ROOT_PATH'), '', realpath(__DIR__ . '/../'));
-        AssetsCollector\Helpers::createSymlink(
-            sprintf('%s/assets%s/node_modules/tinymce', $_ENV['PUBLIC_DIR'], $path),
-            __DIR__ . '/../node_modules/tinymce',
-            $this->logger
-        );
-        AssetsCollector\Helpers::createSymlink(
-            sprintf('%s/assets%s/node_modules/tinymce/langs', $_ENV['PUBLIC_DIR'], $path),
-            __DIR__ . '/langs',
-            $this->logger
-        );
-        $this->assets->add('js', __DIR__ . '/../node_modules/tinymce/tinymce.min.js');
+        makeSymlink(sprintf('%s/assets%s/node_modules/tinymce', $_ENV['PUBLIC_DIR'], $path), __DIR__ . '/../node_modules/tinymce');
+        makeSymlink(sprintf('%s/assets%s/node_modules/tinymce/langs', $_ENV['PUBLIC_DIR'], $path), __DIR__ . '/langs');
+        $this->assets->add(AssetsCollector\AssetType::JS, __DIR__ . '/../node_modules/tinymce/tinymce.min.js');
     }
 
 
